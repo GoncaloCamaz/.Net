@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Portelinha.Models.Servico>
+
+@{
+    ViewBag.Title = "HistoricoServicos";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<br><br>
+
+<h2>Historico de Servicos</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Pack.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataHora)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Preco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apartamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rua)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nr)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pack.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataHora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apartamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nr)
+            </td>
+            <td>
+                @{
+                    if (item.Estado.Equals("A") || item.Estado.Equals("Agendado"))
+                    {
+                        @Html.ActionLink("Cancelar Serviço", "CancelarServico", new { idServico = item.Id })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Ver Detalhes", "VerDetalhes", new { idServico = item.Id })
+                    }
+
+                }
+            </td>
+        </tr>
+    }
+
+</table>

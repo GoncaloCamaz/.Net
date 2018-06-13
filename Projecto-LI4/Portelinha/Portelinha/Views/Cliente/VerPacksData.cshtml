@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "VerPacksData";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
+
+</head>
+<body>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12"></div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <!-- form start -->
+            
+                    @using (Html.BeginForm("VerPacksData", "Cliente", FormMethod.Post))
+                    {
+                        @Html.ValidationSummary(true);
+                <form>
+                    <input id="datetime" type="datetime-local" name="data" required="required">
+                    <input type="number" name="preco" class="form-control" /> <h6>Custo Máximo Pack (€)</h6>
+                    <button type="submit" class="btn btn-default">Submeter</button>
+                </form>
+                        <!-- form end -->
+                    }
+
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12"></div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    
+    @model IEnumerable<Portelinha.Models.Pack>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capacidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duracao)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Capacidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Preco)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duracao)
+                </td>
+                <td>
+                    @Html.ActionLink("Selecionar", "Selecionar", new {id_Pack = item.Id }, null ) 
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

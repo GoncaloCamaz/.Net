@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Portelinha.Models.Servico>
+
+@{
+    ViewBag.Title = "VerServicos";
+    Layout = "~/Views/Shared/_LayoutFunc.cshtml";
+}
+
+<h2>Próximos Servicos</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CP_Localidade.Localidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pack.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataHora)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apartamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rua)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nr)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CP_Localidade.Localidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pack.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataHora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apartamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rua)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nr)
+        </td>
+        <td>
+            @Html.ActionLink("Obter Direções", "ObterDirecoes", new { idServico=item.Id }) |
+            @Html.ActionLink("Confirmar Realização", "ConfirmarServico", new { idServico=item.Id })
+
+        </td>
+    </tr>
+}
+
+</table>

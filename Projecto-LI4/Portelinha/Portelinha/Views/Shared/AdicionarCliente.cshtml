@@ -1,0 +1,135 @@
+﻿@model Portelinha.Models.Cliente
+
+@{
+    ViewBag.Title = "Registar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+    <body>
+        <br />
+        <br />
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12"></div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                @if (!Request.IsAuthenticated)
+                {
+                    using (Html.BeginForm("AdicionarCliente", "Cliente", FormMethod.Post))
+                    {
+                        @Html.ValidationSummary(true);
+                        <form>
+                             <!-- Text input-->
+                            <div class="form-group">
+                                <label for="name">Nome</label>
+                                <div>
+                                    <input id="name" name="name" type="text" class="form-control input-md" required="">
+
+                                </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label for="Email"> Email</label>
+                                <div>
+                                    <input id="Email" name="Email" type="text" class="form-control input-md" required="">
+
+                                </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label for="NIF"> NIF</label>
+                                <div>
+                                    <input id="NIF" name="NIF" type="text" class="form-control input-md" required="">
+                                </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label for="Telemovel">Telemovel</label>
+                                <div>
+                                    <input id="Telemovel" name="Telemovel" type="text" class="form-control input-md" required="">
+
+                                </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label for="Rua">Rua</label>
+                                <div>
+                                    <input id="Rua" name="Rua" type="text" class="form-control input-md" required="">
+
+                                </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label for="CP">Código-Postal</label>
+                                <div>
+                                    <input id="CP" name="CP" type="text" class="form-control input-md" required="">
+
+                                </div>
+                            </div>
+
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label for="Nr">Número da porta</label>
+                                <div >
+                                    <input id="Nr" name="Nr" type="text" class="form-control input-md" required="">
+
+                                </div>
+                            </div>
+
+
+                            <!-- Text input-->
+                            <div>
+                                <label  for="Ap">Apartamento</label>
+                                <div >
+                                    <input id="Ap" name="Ap" type="text" class="form-control input-md">
+
+                                </div>
+                            </div>
+
+                            <!-- Password input-->
+                            <div >
+                                <label for="password">Password</label>
+                                <div >
+                                    <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="">
+
+                                </div>
+                            </div>
+
+
+                            <!-- Button (Double) -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="save"></label>
+                                <div class="col-md-8">
+                                    <button id="save" name="save" class="btn btn-default">Registar</button>
+                                </div>
+                            </div>
+
+                 
+                    </form>
+            }
+        }
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12"></div>
+            </div>
+        </div>
+    </body>
+</html>

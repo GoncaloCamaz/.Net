@@ -1,0 +1,59 @@
+﻿@model Portelinha.Models.Cliente
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
+
+</head>
+<body>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12"></div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <!-- form start -->
+                @if (!Request.IsAuthenticated)
+                {
+                    using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                    {
+                        @Html.ValidationSummary(true);
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">NIF</label>
+                                <input type="text" name="username" class="form-control" id="exampleInputEmail1" placeholder="Nif" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Remember me
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-default">Sign in</button>
+                        </form>
+                        <!-- form end -->
+                    }
+                }
+
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12"></div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+</body>
+</html>

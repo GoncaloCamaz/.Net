@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Portelinha.Models.Pack>
+
+@{
+    ViewBag.Title = "consultarCatalogo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Capacidade) <h6> Pessoas </h6>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Preco) <h6> € </h6>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duracao) <h6> Horas</h6>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Capacidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Preco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duracao)
+        </td>
+    </tr>
+}
+
+</table>

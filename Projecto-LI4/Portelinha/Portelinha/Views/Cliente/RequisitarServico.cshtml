@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "RequisitarServico";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+    <br />
+    <br />
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12"></div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                @if (Request.IsAuthenticated)
+                {
+                    using (Html.BeginForm("RequisitarServico", "Cliente", FormMethod.Post))
+                    {
+                        @Html.ValidationSummary(true);
+                <form>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label for="cp">Código Postal</label>
+                        <div>
+                            <input id="cp" name="cp" type="text" class="form-control input-md" required="">
+
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label for="rua"> Rua</label>
+                        <div>
+                            <input id="rua" name="rua" type="text" class="form-control input-md" required="">
+
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label for="nrPorta"> Número Porta</label>
+                        <div>
+                            <input id="nrPorta" name="nrPorta" type="text" class="form-control input-md" required="">
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label for="apartamento">Apartamento</label>
+                        <div>
+                            <input id="apartamento" name="apartamento" type="text" class="form-control input-md">
+
+                        </div>
+                    </div>
+
+
+                    <!-- Button (Double) -->
+                    <div class="form-group">
+                        <div class="ln-md-4">
+                            <button id="save" name="save" class="btn btn-outline-light-light text-dark">Requisitar Serviço</button>
+                            <input type="button" class="btn btn-outline-light-light text-dark" value="Cancel" onclick="location.href='@Url.Action("Index","Cliente")';" />
+
+                        </div>
+                    </div>
+                </form>
+                    }
+                }
+                <div class="col-md-4 col-sm-4 col-xs-12"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

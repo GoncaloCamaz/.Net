@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Database_LI4ModelStoreContainer" CdmEntityContainer="Database_LI4Entities1">
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="Database_LI4Model.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telemovel" ColumnName="Telemovel" />
+          <ScalarProperty Name="CP" ColumnName="CP" />
+          <ScalarProperty Name="Nr" ColumnName="Nr" />
+          <ScalarProperty Name="Apartamento" ColumnName="Apartamento" />
+          <ScalarProperty Name="Rua" ColumnName="Rua" />
+          <ScalarProperty Name="Pass_word" ColumnName="Pass_word" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CP_Localidade">
+      <EntityTypeMapping TypeName="Database_LI4Model.CP_Localidade">
+        <MappingFragment StoreEntitySet="CP_Localidade">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Localidade" ColumnName="Localidade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fatura">
+      <EntityTypeMapping TypeName="Database_LI4Model.Fatura">
+        <MappingFragment StoreEntitySet="Fatura">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Localidade" ColumnName="Localidade" />
+          <ScalarProperty Name="CP" ColumnName="CP" />
+          <ScalarProperty Name="Rua" ColumnName="Rua" />
+          <ScalarProperty Name="Nr" ColumnName="Nr" />
+          <ScalarProperty Name="NIF" ColumnName="NIF" />
+          <ScalarProperty Name="Apartamento" ColumnName="Apartamento" />
+          <ScalarProperty Name="Nome_Cliente" ColumnName="Nome_Cliente" />
+          <ScalarProperty Name="Nome_Pack" ColumnName="Nome_Pack" />
+          <ScalarProperty Name="Id_Pack" ColumnName="Id_Pack" />
+          <ScalarProperty Name="Preco" ColumnName="Preco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Funcionario">
+      <EntityTypeMapping TypeName="Database_LI4Model.Funcionario">
+        <MappingFragment StoreEntitySet="Funcionario">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telemovel" ColumnName="Telemovel" />
+          <ScalarProperty Name="Rua" ColumnName="Rua" />
+          <ScalarProperty Name="CP" ColumnName="CP" />
+          <ScalarProperty Name="Nr" ColumnName="Nr" />
+          <ScalarProperty Name="Apartamento" ColumnName="Apartamento" />
+          <ScalarProperty Name="Pass_word" ColumnName="Pass_word" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pack">
+      <EntityTypeMapping TypeName="Database_LI4Model.Pack">
+        <MappingFragment StoreEntitySet="Pack">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Capacidade" ColumnName="Capacidade" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Preco" ColumnName="Preco" />
+          <ScalarProperty Name="Duracao" ColumnName="Duracao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Produto">
+      <EntityTypeMapping TypeName="Database_LI4Model.Produto">
+        <MappingFragment StoreEntitySet="Produto">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Id_Pack" ColumnName="Id_Pack" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Servico">
+      <EntityTypeMapping TypeName="Database_LI4Model.Servico">
+        <MappingFragment StoreEntitySet="Servico">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="Preco" ColumnName="Preco" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Apartamento" ColumnName="Apartamento" />
+          <ScalarProperty Name="CP" ColumnName="CP" />
+          <ScalarProperty Name="Rua" ColumnName="Rua" />
+          <ScalarProperty Name="Nr" ColumnName="Nr" />
+          <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+          <ScalarProperty Name="Id_Pack" ColumnName="Id_Pack" />
+          <ScalarProperty Name="Id_Fatura" ColumnName="Id_Fatura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Database_LI4Model.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Servico_Funcionario" TypeName="Database_LI4Model.Servico_Funcionario" StoreEntitySet="Servico_Funcionario">
+      <EndProperty Name="Funcionario">
+        <ScalarProperty Name="Id" ColumnName="Id_Funcionario" />
+      </EndProperty>
+      <EndProperty Name="Servico">
+        <ScalarProperty Name="Id" ColumnName="Id_Servico" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

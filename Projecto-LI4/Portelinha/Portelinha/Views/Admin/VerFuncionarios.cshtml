@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Portelinha.Models.Funcionario>
+
+@{
+    ViewBag.Title = "VerFuncionarios";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Ver Funcionarios</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CP_Localidade.Localidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telemovel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apartamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rua)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CP_Localidade.Localidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telemovel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apartamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rua)
+        </td>
+        <td>
+            @Html.ActionLink("Remover Funcionário", "RemoverFunc", new { idFunc=item.Id }) 
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database_LI4Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Telemovel" Type="int" Nullable="false" />
+    <Property Name="CP" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Nr" Type="int" Nullable="false" />
+    <Property Name="Apartamento" Type="varchar" MaxLength="30" />
+    <Property Name="Rua" Type="text" Nullable="false" />
+    <Property Name="Pass_word" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Role" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CP_Localidade">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Localidade" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Fatura">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Localidade" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CP" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Rua" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Nr" Type="int" Nullable="false" />
+    <Property Name="NIF" Type="int" Nullable="false" />
+    <Property Name="Apartamento" Type="varchar" MaxLength="30" />
+    <Property Name="Nome_Cliente" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Nome_Pack" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Id_Pack" Type="int" Nullable="false" />
+    <Property Name="Preco" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Funcionario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Telemovel" Type="int" Nullable="false" />
+    <Property Name="Rua" Type="text" Nullable="false" />
+    <Property Name="CP" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Nr" Type="int" Nullable="false" />
+    <Property Name="Apartamento" Type="varchar" MaxLength="30" />
+    <Property Name="Pass_word" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Role" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pack">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Capacidade" Type="int" Nullable="false" />
+    <Property Name="Descricao" Type="text" Nullable="false" />
+    <Property Name="Preco" Type="money" Nullable="false" />
+    <Property Name="Duracao" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Produto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descricao" Type="text" Nullable="false" />
+    <Property Name="Id_Pack" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Servico">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Data" Type="date" Nullable="false" />
+    <Property Name="Hora" Type="int" Nullable="false" />
+    <Property Name="Preco" Type="money" Nullable="false" />
+    <Property Name="Estado" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Apartamento" Type="varchar" MaxLength="30" />
+    <Property Name="CP" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Rua" Type="text" Nullable="false" />
+    <Property Name="Nr" Type="int" Nullable="false" />
+    <Property Name="Id_Cliente" Type="int" Nullable="false" />
+    <Property Name="Id_Pack" Type="int" Nullable="false" />
+    <Property Name="Id_Fatura" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Servico_Funcionario">
+    <Key>
+      <PropertyRef Name="Id_Servico" />
+      <PropertyRef Name="Id_Funcionario" />
+    </Key>
+    <Property Name="Id_Servico" Type="int" Nullable="false" />
+    <Property Name="Id_Funcionario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK Servico Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Servico" Type="Self.Servico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Servico">
+        <PropertyRef Name="Id_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cliente_CP_Localidade">
+    <End Role="CP_Localidade" Type="Self.CP_Localidade" Multiplicity="1" />
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CP_Localidade">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="CP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fatura_CP_Localidade">
+    <End Role="CP_Localidade" Type="Self.CP_Localidade" Multiplicity="1" />
+    <End Role="Fatura" Type="Self.Fatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CP_Localidade">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Fatura">
+        <PropertyRef Name="CP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Funcionario_CP_Localidade">
+    <End Role="CP_Localidade" Type="Self.CP_Localidade" Multiplicity="1" />
+    <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CP_Localidade">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Funcionario">
+        <PropertyRef Name="CP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Produto_Pack">
+    <End Role="Pack" Type="Self.Pack" Multiplicity="1" />
+    <End Role="Produto" Type="Self.Produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pack">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Produto">
+        <PropertyRef Name="Id_Pack" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Servico_CP_Localidade">
+    <End Role="CP_Localidade" Type="Self.CP_Localidade" Multiplicity="1" />
+    <End Role="Servico" Type="Self.Servico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CP_Localidade">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Servico">
+        <PropertyRef Name="CP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Servico_Fatura">
+    <End Role="Fatura" Type="Self.Fatura" Multiplicity="1" />
+    <End Role="Servico" Type="Self.Servico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fatura">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Servico">
+        <PropertyRef Name="Id_Fatura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Servico_Funcionario_Funcionario">
+    <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="1" />
+    <End Role="Servico_Funcionario" Type="Self.Servico_Funcionario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Funcionario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Servico_Funcionario">
+        <PropertyRef Name="Id_Funcionario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Servico_Funcionario_Servico">
+    <End Role="Servico" Type="Self.Servico" Multiplicity="1" />
+    <End Role="Servico_Funcionario" Type="Self.Servico_Funcionario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servico">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Servico_Funcionario">
+        <PropertyRef Name="Id_Servico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Servico_Pack">
+    <End Role="Pack" Type="Self.Pack" Multiplicity="1" />
+    <End Role="Servico" Type="Self.Servico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pack">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Servico">
+        <PropertyRef Name="Id_Pack" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Database_LI4ModelStoreContainer">
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CP_Localidade" EntityType="Self.CP_Localidade" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fatura" EntityType="Self.Fatura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Funcionario" EntityType="Self.Funcionario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pack" EntityType="Self.Pack" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Produto" EntityType="Self.Produto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Servico" EntityType="Self.Servico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Servico_Funcionario" EntityType="Self.Servico_Funcionario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK Servico Cliente" Association="Self.FK Servico Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Servico" EntitySet="Servico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cliente_CP_Localidade" Association="Self.FK_Cliente_CP_Localidade">
+      <End Role="CP_Localidade" EntitySet="CP_Localidade" />
+      <End Role="Cliente" EntitySet="Cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fatura_CP_Localidade" Association="Self.FK_Fatura_CP_Localidade">
+      <End Role="CP_Localidade" EntitySet="CP_Localidade" />
+      <End Role="Fatura" EntitySet="Fatura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Funcionario_CP_Localidade" Association="Self.FK_Funcionario_CP_Localidade">
+      <End Role="CP_Localidade" EntitySet="CP_Localidade" />
+      <End Role="Funcionario" EntitySet="Funcionario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Produto_Pack" Association="Self.FK_Produto_Pack">
+      <End Role="Pack" EntitySet="Pack" />
+      <End Role="Produto" EntitySet="Produto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Servico_CP_Localidade" Association="Self.FK_Servico_CP_Localidade">
+      <End Role="CP_Localidade" EntitySet="CP_Localidade" />
+      <End Role="Servico" EntitySet="Servico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Servico_Fatura" Association="Self.FK_Servico_Fatura">
+      <End Role="Fatura" EntitySet="Fatura" />
+      <End Role="Servico" EntitySet="Servico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Servico_Funcionario_Funcionario" Association="Self.FK_Servico_Funcionario_Funcionario">
+      <End Role="Funcionario" EntitySet="Funcionario" />
+      <End Role="Servico_Funcionario" EntitySet="Servico_Funcionario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Servico_Funcionario_Servico" Association="Self.FK_Servico_Funcionario_Servico">
+      <End Role="Servico" EntitySet="Servico" />
+      <End Role="Servico_Funcionario" EntitySet="Servico_Funcionario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Servico_Pack" Association="Self.FK_Servico_Pack">
+      <End Role="Pack" EntitySet="Pack" />
+      <End Role="Servico" EntitySet="Servico" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

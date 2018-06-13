@@ -1,0 +1,51 @@
+﻿@model Portelinha.Models.Servico
+
+@{
+    ViewBag.Title = "Confirmar";
+    Layout = "~/Views/Shared/_LayoutFunc.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Realização</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
+
+</head>
+<body>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12"></div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <!-- form start -->
+                @if (Request.IsAuthenticated)
+                {
+                    using (Html.BeginForm("Confirmar", "Funcionario", FormMethod.Post))
+                    {
+                        @Html.ValidationSummary(true);
+                        <form>
+                            <div class="form-group">
+                                <h2> Se Pretender insira um comentário.</h2>
+                                <input type="text" name="comentario"  class="form-control"/>
+                            </div>
+
+                            <button type="submit" class="btn btn-default">Confirmar</button>
+                        </form>
+                        <!-- form end -->
+                    }
+                }
+
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12"></div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+</body>
+</html>
